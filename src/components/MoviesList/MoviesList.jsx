@@ -1,14 +1,16 @@
 import MoviesListItem from '../MoviesListItem/MoviesListItem';
+import { CollectionList } from './MoviesList.styled';
 
 const MoviesList = ({ collection }) => {
   console.log('collection', collection);
   return (
-    <ul>
-      {collection.map(({ id, title, overview, poster_path }) => (
-        <MoviesListItem id={id} title={title} overview={overview} poster={poster_path} />
+    <CollectionList>
+      {collection.map(({ id, title, original_name, overview, poster_path }) => (
+        <MoviesListItem key={id} id={id} title={title} name={original_name} overview={overview} poster={poster_path} />
       ))}
-    </ul>
+    </CollectionList>
   );
 };
 
 export default MoviesList;
+
