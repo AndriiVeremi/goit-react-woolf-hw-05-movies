@@ -2,7 +2,7 @@ import MoviesListItem from '../MoviesListItem/MoviesListItem';
 import { CollectionList } from './MoviesList.styled';
 
 const MoviesList = ({ collection }) => {
-  console.log('collection', collection);
+
   return (
     <CollectionList>
       {collection.map(({ id, title, original_name, overview, poster_path }) => (

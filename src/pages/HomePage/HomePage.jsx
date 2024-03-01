@@ -1,30 +1,29 @@
 import { useState } from 'react';
-import getTrendingDay from '../../api/theMoviedAPI';
+import { getTrendingDay } from '../../api/theMoviedAPI';
 import MoviesList from '../../components/MoviesList/MoviesList';
 
 const HomePage = () => {
-  const [moviTrending, setMoviTrending] = useState([]);
+  const [moviesTrending, setMoviesTrending] = useState([]);
   const [error, setError] = useState(null);
 
   const trending = async () => {
     try {
       const data = await getTrendingDay();
-      console.log('data', data.data.results);
-      setMoviTrending(data.data.results);
+      setMoviesTrending(data.data.results);
     } catch (error) {
-        setError(error)
+      setError(error);
     }
   };
 
-  if (moviTrending.length === 0) {
+  if (moviesTrending.length === 0) {
     trending();
   }
 
   return (
     <div>
-        {error && <h1>error</h1>}
+      {error && <h1>error</h1>}
       <h1>Trenting today</h1>
-      <MoviesList collection={moviTrending} />
+      <MoviesList collection={moviesTrending} />
     </div>
   );
 };
