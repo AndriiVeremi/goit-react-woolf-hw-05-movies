@@ -6,34 +6,38 @@ import { getSearchQuery } from 'api/theMoviedAPI';
 
 const MoviesPage = () => {
   const [searchMowies, setSearchMowies] = useState([]);
-  const [searchQuery, ] = useSearchParams();
+  const [error, setError] = useState([]);
+  const [searchQuery,  ] = useSearchParams();
 
-  console.log('searchQuery', searchQuery)
-
-  
-
-  
-  const query = searchQuery.get('query')
-  console.log('ddd', query)
+  const query = searchQuery.get('query');
 
   useEffect(() => {
+    try {
+    
+      if (query.length === 0) {
+        return;
+      }
 
-    const searchFilms = async () => {
-      console.log('ddd2', query)
-      const data = await getSearchQuery(query);
-      console.log('data2', data)
-      setSearchMowies(data.data.results);
-    };
+      const searchFilms = async () => {
+        const data = await getSearchQuery(query);
+        setSearchMowies(data.data.results);
+      };
+      searchFilms();
 
-    searchFilms()
-
-  }, [searchQuery, query]);
+    } catch (error) {
+      console.log(error);
+      setError(error);
+    } finally {
+      
+    }
+  }, [query]);
 
   return (
-    <>
+    <div>
       <MoviesSearchForm />
+      {error && <h1>{error}</h1>}
       {searchMowies && <MoviesList collection={searchMowies} />}
-    </>
+    </div>
   );
 };
 

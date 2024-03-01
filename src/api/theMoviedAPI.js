@@ -1,20 +1,3 @@
-// import axios from 'axios';
-
-// axios.defaults.baseURL = 'https://api.themoviedb.org/3';
-
-// export const getTrending = async () => {
-//   const data = await axios(`/trending/all/day?language=en-US`, {
-//     headers: {
-//       accept: 'application/json',
-//       Authorization:
-//         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MjU3ODU2Zjc4OWJhZGE1MDI5NmFhYmRjM2E4YjhmMyIsInN1YiI6IjY0MzZmZmRkZmQ0ZjgwMDExMWZhZTc5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Wsrzn3TrYV0jIlzFxZ664vNuwDoGi7nYTWve9tWqVnA',
-//     },
-//   });
-//   return data;
-// };
-
-//====================================
-
 import axios from 'axios';
 
 const API_KEY = '5257856f789bada50296aabdc3a8b8f3';
@@ -32,22 +15,3 @@ export const getSearchQuery = async (query) => {
   const data = await axios(`/search/movie?query=${query}&api_key=${API_KEY}&include_adult=false&language=en-US&page=1`);
   return data;
 };
-
-// export const getSearchQuery = async query => {
-//   const data = await axios(`/search/movie`, {
-//     params: {
-//       query: `${query}`,
-//       include_adult: 'false',
-//       language: 'en-US',
-//       page: '1',
-//     },
-//     headers: {
-//       accept: 'application/json',
-//       Authorization:
-//         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MjU3ODU2Zjc4OWJhZGE1MDI5NmFhYmRjM2E4YjhmMyIsInN1YiI6IjY0MzZmZmRkZmQ0ZjgwMDExMWZhZTc5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Wsrzn3TrYV0jIlzFxZ664vNuwDoGi7nYTWve9tWqVnA',
-//     },
-//   });
-//   return data;
-// };
-
-

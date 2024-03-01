@@ -9,17 +9,16 @@ const MoviesSearchForm = () => {
     const onSubmit = e => {
       e.preventDefault();
       setSearchQuery({ query });
-    //   clearForm()
+      clearForm()
     };
   
     const handleChange = e => {
       setQuery(e.target.value);
     };
   
-    // const clearForm =  () => {
-    //   setQuery('')
-    //   setSearchQuery({  })
-    // }
+    const clearForm = () => {
+      setQuery('')
+    }
   
     return (
       <SearchFormWrapper>

@@ -11,6 +11,7 @@ const HomePage = () => {
       const data = await getTrendingDay();
       setMoviesTrending(data.data.results);
     } catch (error) {
+      console.log(error)
       setError(error);
     }
   };
