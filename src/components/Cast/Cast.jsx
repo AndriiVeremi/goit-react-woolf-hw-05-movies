@@ -1,25 +1,51 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMoviesCats } from 'api/theMoviedAPI';
+import {
+  CastList,
+  CastItem,
+  CastDesc,
+  CastName,
+  CastText,
+} from './Cast.styled';
 
 const Cast = () => {
   const { movId } = useParams();
-//   const [details, setDetails] = useState([]);
+  const [cast, setCast] = useState([]);
 
   useEffect(() => {
-
-    const getCats = async () => {
+    const getCast = async () => {
       const data = await getMoviesCats(movId);
-      console.log('result', data)
-    //   setDetails(data.data);
+      setCast(data.data.cast);
     };
 
-    getCats();
+    getCast();
   }, [movId]);
 
-  return <div>dfsfsd</div>
+  return (
+    <div>
+      <CastList>
+        {cast.map(({ id, profile_path, character, name }) => (
+          <CastItem key={id}>
+            <img
+              src={`https://image.tmdb.org/t/p/original/${profile_path}`}
+              alt={name}
+              width={'120px'}
+              height={'170px'}
+            />
+            <CastDesc>
+              <CastText>Character name:</CastText>
+              <CastName>{character}</CastName>
+            </CastDesc>
+            <CastDesc>
+              <CastText>Original name:</CastText>
+              <CastName>{name}</CastName>
+            </CastDesc>
+          </CastItem>
+        ))}
+      </CastList>
+    </div>
+  );
 };
-
-
 
 export default Cast;
