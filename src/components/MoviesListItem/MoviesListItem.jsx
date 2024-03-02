@@ -1,27 +1,26 @@
-import { CollectionItem } from "./MoviesListItem.styled";
+import { useSearchParams } from 'react-router-dom';
+import { CollectionItem } from './MoviesListItem.styled';
 
-const MoviesListItem = ({
-  id,
-  title,
-  name,
-  overview,
-  poster,
-}) => {
+const MoviesListItem = ({ id, title, name, overview, poster }) => {
+  const [, setItemId] = useSearchParams();
 
-  
-  
+  const HandleDetails = () => {
+    setItemId({ id });
+    console.log('id', id);
+  };
+
   return (
-    <CollectionItem key={id}>
+    <CollectionItem key={id} onClick={HandleDetails}>
       <img
         src={`https://image.tmdb.org/t/p/original/${poster}`}
         alt={title}
         width={'290px'}
         height={'400px'}
       />
-      <h2>{title ? title : name }</h2>
+      <h2>{title ? title : name}</h2>
       <p>{overview.slice(0, 120)}</p>
     </CollectionItem>
   );
 };
 
-export default MoviesListItem
+export default MoviesListItem;

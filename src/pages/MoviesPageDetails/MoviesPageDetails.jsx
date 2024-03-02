@@ -1,4 +1,8 @@
+
+
 const MoviesPageDetails = () => {
+
+    
     return <h3>MoviesPageDetails</h3>
 }
 

@@ -35,7 +35,7 @@ const MoviesPage = () => {
   return (
     <div>
       <MoviesSearchForm />
-      {error && <h1>{error}</h1>}
+      {/* {error && <h1>{error}</h1>} */}
       {searchMowies && <MoviesList collection={searchMowies} />}
     </div>
   );
