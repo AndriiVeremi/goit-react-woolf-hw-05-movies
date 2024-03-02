@@ -2,11 +2,11 @@ import { useSearchParams } from 'react-router-dom';
 import { CollectionItem } from './MoviesListItem.styled';
 
 const MoviesListItem = ({ id, title, name, overview, poster }) => {
-  const [, setItemId] = useSearchParams();
+  
+  const [, setMovId] = useSearchParams();
 
   const HandleDetails = () => {
-    setItemId({ id });
-    console.log('id', id);
+    setMovId({ id });
   };
 
   return (
