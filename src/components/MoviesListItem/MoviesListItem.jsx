@@ -9,7 +9,7 @@ const MoviesListItem = ({ id, title, name, release, poster }) => {
      <img
         src={`https://image.tmdb.org/t/p/original/${poster}`}
         alt={title}
-        width={'290px'}
+        width={'270px'}
         height={'400px'}
       />
       <h2>{title ? title : name}</h2>

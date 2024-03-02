@@ -1,4 +1,16 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import {
+  DetailsWrapper,
+  Details,
+  DetailsTitle,
+  DetailsInfo,
+  DetailsInfoBord,
+  AdditionalWrapper,
+  AdditionalTitle,
+  AdditionalList,
+
+  AdditionalLink,
+} from './MoviesDetails.styled';
 
 const MoviesDetails = ({ details }) => {
   const {
@@ -6,39 +18,59 @@ const MoviesDetails = ({ details }) => {
     original_name,
     overview,
     poster_path,
+    backdrop_path,
     vote_average,
     genres,
   } = details;
 
+  const rootBg = document.querySelector('body');
+  rootBg.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backdrop_path})`;
+  rootBg.style.backgroundSize = 'cover';
+  rootBg.style.backgroundRepeat = 'no-repeat';
+  rootBg.style.backgroundAttachment = 'fixed';
+
   return (
-    <>
-      <div>
+    <DetailsWrapper>
+      <Details>
         <img
           src={`https://image.tmdb.org/t/p/original/${poster_path}`}
           alt={title}
-          width={'290px'}
-          height={'400px'}
+          width={'400px'}
+          height={'600px'}
         />
-        <h2>{title ? title : original_name}</h2>
-        <p>User score: {Math.round(vote_average * 10)}%</p>
-        <p>Overview: {overview}</p>
-        <p>Genres: {genres && genres.map(item => item.name)}</p>
-      </div>
-      <hr />
-      <div>
-        <h2>Additional information</h2>
-        <ul>
-          <li>
-            <Link to={'cast'}>Cast</Link>
-          </li>
-          <li>
-            <Link to={'reviews'}>Reviers</Link>
-          </li>
-        </ul>
-        <hr />
+        <div>
+          <DetailsTitle>{title ? title : original_name}</DetailsTitle>
+          <DetailsInfo>
+            Overview: <DetailsInfoBord>{overview}</DetailsInfoBord>
+          </DetailsInfo>
+          <DetailsInfo>
+            User score:{' '}
+            <DetailsInfoBord>{Math.round(vote_average * 10)}%</DetailsInfoBord>
+          </DetailsInfo>
+          <DetailsInfo>
+            Genres:{' '}
+            <DetailsInfoBord>
+              {genres && genres.map(item => {
+                return <p key={item.id}>{item.name}</p>
+              })}
+            </DetailsInfoBord>
+          </DetailsInfo>
+        </div>
+      </Details>
+
+      <AdditionalWrapper>
+        <AdditionalTitle>Additional information</AdditionalTitle>
+        <AdditionalList>
+     
+            <AdditionalLink to={'cast'}>Cast</AdditionalLink>
+         
+        
+            <AdditionalLink to={'reviews'}>Reviers</AdditionalLink>
+         
+        </AdditionalList>
         <Outlet />
-      </div>
-    </>
+      </AdditionalWrapper>
+    </DetailsWrapper>
   );
 };
 

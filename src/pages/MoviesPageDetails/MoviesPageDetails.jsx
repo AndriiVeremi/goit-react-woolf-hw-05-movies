@@ -8,12 +8,17 @@ const MoviesPageDetails = () => {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    const getMovies = async () => {
-      const data = await getMoviesDetails(movId);
-      setDetails(data.data);
-    };
+    try {
+      const getMovies = async () => {
+        const data = await getMoviesDetails(movId);
+        setDetails(data.data);
+      };
 
-    getMovies();
+      getMovies();
+    } catch (error) {
+      console.error(error);
+    } finally {
+    }
   }, [movId]);
 
   return <MoviesDetails details={details} />;

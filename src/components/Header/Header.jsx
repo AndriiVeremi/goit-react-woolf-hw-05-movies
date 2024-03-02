@@ -4,7 +4,7 @@ import { HeaderWrapper, HeaderMenuList, HeaderMenuItem } from './Header.styled';
 const Header = () => {
   return (
     <HeaderWrapper>
-     <HeaderMenuList>
+      <HeaderMenuList>
         <HeaderMenuItem>
           <NavLink to="/">Home</NavLink>
         </HeaderMenuItem>

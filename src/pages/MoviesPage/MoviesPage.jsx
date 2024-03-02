@@ -26,8 +26,7 @@ console.log('query',query)
       searchFilms();
 
     } catch (error) {
-      console.log(error);
-      setError(error);
+      console.error(error);
     } finally {
       
     }

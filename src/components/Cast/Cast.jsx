@@ -14,12 +14,16 @@ const Cast = () => {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    const getCast = async () => {
-      const data = await getMoviesCats(movId);
-      setCast(data.data.cast);
-    };
+    try {
+      const getCast = async () => {
+        const data = await getMoviesCats(movId);
+        setCast(data.data.cast);
+      };
 
-    getCast();
+      getCast();
+    } catch (error) {
+      console.error(error);
+    }
   }, [movId]);
 
   return (

@@ -5,7 +5,6 @@ display: flex;
 flex-wrap: wrap;
 gap: 10px;
 `
-
 export const CastItem = styled.li`
 display: flex;
 flex-direction: column;
@@ -21,12 +20,10 @@ display: flex;
 flex-direction: column;
 align-items: center;
 `
-
 export const CastName = styled.p`
 font-weight: 700;
 font-size: 16px;
 `
-
 export const CastText = styled.p`
 font-size: 16px;
 `
