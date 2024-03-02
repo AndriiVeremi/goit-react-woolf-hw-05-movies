@@ -15,3 +15,8 @@ export const getSearchQuery = async (query) => {
   const data = await axios(`/search/movie?query=${query}&api_key=${API_KEY}&include_adult=false&language=en-US&page=1`);
   return data;
 };
+
+export const getMoviesDetails = async (id) => {
+  const data = await axios(`/movie/${id}?api_key=${API_KEY}`);
+  return data;
+};
