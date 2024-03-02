@@ -19,11 +19,15 @@ const MoviesSearchForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
+    if (query.length === 0) {
+      alert('Ooops');
+      return;
+    }
     setSearchQuery({ query });
   };
 
   const handleChange = e => {
-    setQuery(e.target.value);
+    setQuery(e.target.value.toLowerCase());
   };
 
   return (

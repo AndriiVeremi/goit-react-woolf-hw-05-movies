@@ -4,18 +4,16 @@ import { getMoviesDetails } from 'api/theMoviedAPI';
 import MoviesDetails from 'components/MoviesDetails/MoviesDetails';
 
 const MoviesPageDetails = () => {
-
   const { movId } = useParams();
- const [details, setDetails] = useState([])
+  const [details, setDetails] = useState([]);
 
   useEffect(() => {
     const getMovies = async () => {
       const data = await getMoviesDetails(movId);
-      console.log('dataId', data.data);
-      setDetails(data.data)
+      setDetails(data.data);
     };
 
-    getMovies()
+    getMovies();
   }, [movId]);
 
   return <MoviesDetails details={details} />;

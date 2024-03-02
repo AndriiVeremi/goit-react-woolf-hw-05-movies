@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { CollectionItem } from './MoviesListItem.styled';
 
-const MoviesListItem = ({ id, title, name, overview, poster }) => {
+const MoviesListItem = ({ id, title, name, release, poster }) => {
   
   return (
     <CollectionItem key={id} >
@@ -13,7 +13,7 @@ const MoviesListItem = ({ id, title, name, overview, poster }) => {
         height={'400px'}
       />
       <h2>{title ? title : name}</h2>
-      <p>{overview.slice(0, 120)}</p>
+      {release && <p>release date: {release}</p>}
      </Link>
     </CollectionItem>
   );
