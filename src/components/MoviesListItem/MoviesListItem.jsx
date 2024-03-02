@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CollectionItem } from './MoviesListItem.styled';
+import { CollectionItem, CollectionTitle } from './MoviesListItem.styled';
 
 const MoviesListItem = ({ id, title, name, release, poster }) => {
   
@@ -12,8 +12,8 @@ const MoviesListItem = ({ id, title, name, release, poster }) => {
         width={'270px'}
         height={'400px'}
       />
-      <h2>{title ? title : name}</h2>
-      {release && <p>release date: {release}</p>}
+      <CollectionTitle>{title ? title : name}</CollectionTitle>
+      {release && <p>Release date: {release}</p>}
      </Link>
     </CollectionItem>
   );

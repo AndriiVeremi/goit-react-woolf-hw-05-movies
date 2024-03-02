@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 import {
   SearchFormWrapper,
   SearchForm,
@@ -20,7 +21,11 @@ const MoviesSearchForm = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (query.length === 0) {
-      alert('Ooops');
+      Report.failure(
+        'Ooops...',
+        '"Failure is simply the opportunity to begin again, this time more intelligently." <br/><br/>- Henry Ford',
+        'Okay',
+        );
       return;
     }
     setSearchQuery({ query });

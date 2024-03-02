@@ -1,27 +1,38 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { getMoviesDetails } from 'api/theMoviedAPI';
 import MoviesDetails from 'components/MoviesDetails/MoviesDetails';
 
 const MoviesPageDetails = () => {
   const { movId } = useParams();
   const [details, setDetails] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    try {
-      const getMovies = async () => {
+    const getMovies = async () => {
+      Loading.dots({ svgSize: '250px' });
+      setError(null);
+      try {
         const data = await getMoviesDetails(movId);
         setDetails(data.data);
-      };
+      } catch (error) {
+        setError(error);
+        console.error(error);
+      } finally {
+        Loading.remove();
+      }
+    };
 
-      getMovies();
-    } catch (error) {
-      console.error(error);
-    } finally {
-    }
+    getMovies();
   }, [movId]);
 
-  return <MoviesDetails details={details} />;
+  return (
+    <>
+      <MoviesDetails details={details} />
+      {error && <h2>error: {error}</h2>}
+    </>
+  );
 };
 
 export default MoviesPageDetails;

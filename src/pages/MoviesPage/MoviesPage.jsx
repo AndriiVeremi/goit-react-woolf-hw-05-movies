@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import MoviesSearchForm from 'components/MoviesSearchForm/MoviesSearchForm';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { getSearchQuery } from 'api/theMoviedAPI';
@@ -7,29 +8,29 @@ import { getSearchQuery } from 'api/theMoviedAPI';
 const MoviesPage = () => {
   const [searchMowies, setSearchMowies] = useState([]);
   const [error, setError] = useState(null);
-  const [searchQuery,  ] = useSearchParams();
+  const [searchQuery] = useSearchParams();
 
   const query = searchQuery.get('query');
-console.log('query',query)
 
   useEffect(() => {
-    try {
-    
-      if (query === null) {
-        return;
-      }
+    if (query === null) {
+      return;
+    }
+    const searchFilms = async () => {
+      Loading.dots({ svgSize: '250px' });
       setError(null);
-      const searchFilms = async () => {
+      try {
         const data = await getSearchQuery(query);
         setSearchMowies(data.data.results);
-      };
-      searchFilms();
+      } catch (error) {
+        setError(error);
+        console.error(error);
+      } finally {
+        Loading.remove();
+      }
+    };
 
-    } catch (error) {
-      console.error(error);
-    } finally {
-      
-    }
+    searchFilms();
   }, [query]);
 
   return (

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const CollectionItem = styled.li`
 width: 270px;
-/* height: 400px; */
 padding: 10px;
 gap: 20px;
 display: flex;
@@ -15,4 +14,7 @@ transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
 &:hover{
     scale: 1.03;
 }
+` 
+export const CollectionTitle = styled.h2`
+color: #333;
 ` 
