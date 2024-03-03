@@ -1,21 +1,21 @@
-// import { lazy } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NavLayout from 'layouts/NavLayout';
 import { ContainerApp } from './App.styled';
 
-// const HomePage = lazy(() => import('pages/HomePage/HomePage'));
-// const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
-// const MoviesPageDetails = lazy(() => import('pages/MoviesPageDetails/MoviesPageDetails'));
-// const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
-// const Cast = lazy(() => import('components/Cast/Cast'));
-// const Reviews = lazy(() => import('components/Reviews/Reviews'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
+const MoviesPageDetails = lazy(() => import('pages/MoviesPageDetails/MoviesPageDetails'));
+const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
+const Cast = lazy(() => import('components/Cast/Cast'));
+const Reviews = lazy(() => import('components/Reviews/Reviews'));
 
-import HomePage from 'pages/HomePage/HomePage';
-import MoviesPage from 'pages/MoviesPage/MoviesPage';
-import MoviesPageDetails from 'pages/MoviesPageDetails/MoviesPageDetails';
-import PageNotFound from 'pages/PageNotFound/PageNotFound';
-import Cast from 'components/Cast/Cast';
-import Reviews from 'components/Reviews/Reviews';
+// import HomePage from 'pages/HomePage/HomePage';
+// import MoviesPage from 'pages/MoviesPage/MoviesPage';
+// import MoviesPageDetails from 'pages/MoviesPageDetails/MoviesPageDetails';
+// import PageNotFound from 'pages/PageNotFound/PageNotFound';
+// import Cast from 'components/Cast/Cast';
+// import Reviews from 'components/Reviews/Reviews';
 
 const App = () => {
   return (
