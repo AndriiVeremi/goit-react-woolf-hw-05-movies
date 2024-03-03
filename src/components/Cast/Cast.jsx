@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { checkImg } from 'utils/checkImg';
 import { getMoviesCats } from 'api/theMoviedAPI';
 import {
@@ -22,6 +23,12 @@ const Cast = () => {
         Loading.dots({ svgSize: '250px' });
         setError(null);
         const data = await getMoviesCats(movId);
+
+        if (data.data.cast.length === 0) {
+          Notify.info('Sorry, no information');
+          return;
+        }
+
         setCast(data.data.cast);
       } catch (error) {
         console.error(error);

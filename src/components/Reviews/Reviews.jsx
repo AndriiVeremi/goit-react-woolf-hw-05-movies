@@ -1,7 +1,8 @@
-import { getMoviesReviews } from 'api/theMoviedAPI';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { getMoviesReviews } from 'api/theMoviedAPI';
 
 const Reviews = () => {
   const { movId } = useParams();
@@ -15,7 +16,14 @@ const Reviews = () => {
         setError(null);
 
         const data = await getMoviesReviews(movId);
+        
+        if(data.data.results.length === 0) {
+          Notify.info('Sorry, no reviews');
+          return
+        }
+        
         setReviews(data.data.results);
+
       } catch (error) {
         console.error(error);
         setError(error);

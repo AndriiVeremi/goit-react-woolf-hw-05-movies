@@ -13,7 +13,7 @@ const HomePage = () => {
       Loading.dots({ svgSize: '250px' });
       setError(null);
       try {
-        const data = await getTrendingDay();
+        const data = await getTrendingDay();        
         setMoviesTrending(data.data.results);
       } catch (error) {
         setError(error);
