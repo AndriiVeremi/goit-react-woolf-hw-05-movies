@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { checkImg } from 'utils/checkImg';
 import {
   DetailsWrapper,
   Details,
@@ -8,7 +9,6 @@ import {
   AdditionalWrapper,
   AdditionalTitle,
   AdditionalList,
-
   AdditionalLink,
 } from './MoviesDetails.styled';
 
@@ -33,7 +33,7 @@ const MoviesDetails = ({ details }) => {
     <DetailsWrapper>
       <Details>
         <img
-          src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+          src={`${checkImg(poster_path)}`}
           alt={title}
           width={'400px'}
           height={'600px'}
@@ -50,9 +50,10 @@ const MoviesDetails = ({ details }) => {
           <DetailsInfo>
             Genres:{' '}
             <DetailsInfoBord>
-              {genres && genres.map(item => {
-                return <p key={item.id}>{item.name}</p>
-              })}
+              {genres &&
+                genres.map(item => {
+                  return <p key={item.id}>{item.name}</p>;
+                })}
             </DetailsInfoBord>
           </DetailsInfo>
         </div>
@@ -61,12 +62,9 @@ const MoviesDetails = ({ details }) => {
       <AdditionalWrapper>
         <AdditionalTitle>Additional information</AdditionalTitle>
         <AdditionalList>
-     
-            <AdditionalLink to={'cast'}>Cast</AdditionalLink>
-         
-        
-            <AdditionalLink to={'reviews'}>Reviers</AdditionalLink>
-         
+          <AdditionalLink to={'cast'}>Cast</AdditionalLink>
+
+          <AdditionalLink to={'reviews'}>Reviers</AdditionalLink>
         </AdditionalList>
         <Outlet />
       </AdditionalWrapper>

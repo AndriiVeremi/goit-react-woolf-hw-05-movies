@@ -26,6 +26,10 @@ const HomePage = () => {
     trendingMovies();
   }, []);
 
+  const rootBg = document.querySelector('body');
+  rootBg.style.backgroundImage = "none";
+
+
   return (
     <div>
       <Title>Trenting today</Title>

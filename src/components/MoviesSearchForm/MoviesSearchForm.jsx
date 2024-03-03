@@ -23,7 +23,7 @@ const MoviesSearchForm = () => {
     if (query.length === 0) {
       Report.failure(
         'Ooops...',
-        '"Failure is simply the opportunity to begin again, this time more intelligently." <br/><br/>- Henry Ford',
+        'Sorry, but I dont know what to search for. <br/><br/> Please enter your query in the search field, and Ill see what I can find.',
         'Okay',
         );
       return;

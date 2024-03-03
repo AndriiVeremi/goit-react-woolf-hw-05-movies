@@ -11,9 +11,9 @@ const MoviesPageDetails = () => {
 
   useEffect(() => {
     const getMovies = async () => {
-      Loading.dots({ svgSize: '250px' });
-      setError(null);
       try {
+        Loading.dots({ svgSize: '250px' });
+        setError(null);
         const data = await getMoviesDetails(movId);
         setDetails(data.data);
       } catch (error) {

@@ -1,25 +1,35 @@
 import { getMoviesReviews } from 'api/theMoviedAPI';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const Reviews = () => {
   const { movId } = useParams();
   const [reviews, setReviews] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    try {
-      const getReviews = async () => {
-        const data = await getMoviesReviews(movId);
-        console.log('rewiews', data.data.results);
-        setReviews(data.data.results);
-      };
+    const getReviews = async () => {
+      try {
+        Loading.dots({ svgSize: '250px' });
+        setError(null);
 
-      getReviews();
-    } catch (error) {}
+        const data = await getMoviesReviews(movId);
+        setReviews(data.data.results);
+      } catch (error) {
+        console.error(error);
+        setError(error);
+      } finally {
+        Loading.remove();
+      }
+    };
+
+    getReviews();
   }, [movId]);
 
   return (
     <div>
+      {error && <h2>error: {error}</h2>}
       <ul>
         {reviews.map(({ author, content, created_at }) => (
           <li>

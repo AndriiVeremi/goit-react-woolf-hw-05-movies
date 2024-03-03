@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import MoviesSearchForm from 'components/MoviesSearchForm/MoviesSearchForm';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { getSearchQuery } from 'api/theMoviedAPI';
@@ -17,11 +18,13 @@ const MoviesPage = () => {
       return;
     }
     const searchFilms = async () => {
-      Loading.dots({ svgSize: '250px' });
-      setError(null);
       try {
+        Loading.dots({ svgSize: '250px' });
+        setError(null);
+
         const data = await getSearchQuery(query);
         setSearchMowies(data.data.results);
+        Notify.success(`Found ${data.data.results.length} movies`);
       } catch (error) {
         setError(error);
         console.error(error);
@@ -32,6 +35,9 @@ const MoviesPage = () => {
 
     searchFilms();
   }, [query]);
+
+  const rootBg = document.querySelector('body');
+  rootBg.style.backgroundImage = "none";
 
   return (
     <div>
