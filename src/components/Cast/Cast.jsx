@@ -54,12 +54,11 @@ const Cast = () => {
               height={'170px'}
             />
             <CastDesc>
-              <CastText>Character name:</CastText>
-              <CastName>{character}</CastName>
+              <CastName>{name}</CastName>
             </CastDesc>
             <CastDesc>
-              <CastText>Original name:</CastText>
-              <CastName>{name}</CastName>
+              <CastText>Character name:</CastText>
+              <CastName>{character}</CastName>
             </CastDesc>
           </CastItem>
         ))}

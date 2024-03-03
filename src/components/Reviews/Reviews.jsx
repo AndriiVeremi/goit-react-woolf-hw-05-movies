@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { format } from "date-fns";
 import { getMoviesReviews } from 'api/theMoviedAPI';
 import { ReviewsItem, ReviewsList, ReviewsWrap, ReviewsAuthor, ReviewsText } from './Reviews.styled';
 
@@ -44,7 +45,7 @@ const Reviews = () => {
           <ReviewsItem key={author}>
             <ReviewsWrap>
             <ReviewsAuthor>{author}</ReviewsAuthor>
-            <p>{created_at}</p>
+            <p>{ format(new Date(created_at), "dd MMMM yyyy HH:mm")}</p>
             </ReviewsWrap>
             <ReviewsText>{content}</ReviewsText>
           </ReviewsItem>

@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { format } from "date-fns";
 import { checkImg } from 'utils/checkImg';
 import { CollectionItem, CollectionTitle } from './MoviesListItem.styled';
 
@@ -17,7 +18,8 @@ const MoviesListItem = ({ id, title, name, release, poster }) => {
         />
 
         <CollectionTitle>{title ? title : name}</CollectionTitle>
-        {release && <p>Release date: {release}</p>}
+        {release && <p>Release: { format(new Date(release), "dd MMMM yyyy")}</p>}
+       
       </Link>
     </CollectionItem>
   );

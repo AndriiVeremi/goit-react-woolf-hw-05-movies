@@ -14,9 +14,11 @@ background-color: #ebebeb;
 export const ReviewsWrap = styled.div`
 display: flex;
 gap: 10px;
+align-items: center;
 `
 export const ReviewsAuthor = styled.p`
 font-weight: 700;
+font-size: 20px;
 `
 export const ReviewsText = styled.p`
 font-style: italic;

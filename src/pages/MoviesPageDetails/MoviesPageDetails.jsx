@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { getMoviesDetails } from 'api/theMoviedAPI';
 import MoviesDetails from 'components/MoviesDetails/MoviesDetails';
+import { GoBeckBtn, WrapperBtn } from './MoviesPageDetails.styled';
 
 const MoviesPageDetails = () => {
   const { movId } = useParams();
@@ -36,7 +37,7 @@ const MoviesPageDetails = () => {
 
   return (
     <>
-      <button onClick={onGoBack}>Go back</button>
+      <WrapperBtn><GoBeckBtn onClick={onGoBack}>Go back</GoBeckBtn></WrapperBtn>
       {details && <MoviesDetails details={details} />}
       {error && <h2>error: {error}</h2>}
     </>

@@ -8,11 +8,11 @@ import { Title } from './HomePage.styled';
 const HomePage = () => {
   const [moviesTrending, setMoviesTrending] = useState([]);
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
+    Loading.dots({ svgSize: '250px' });
+    setError(null);
     const trendingMovies = async () => {
-      Loading.dots({ svgSize: '250px' });
-      setError(null);
       try {
         const data = await getTrendingDay();        
         setMoviesTrending(data.data.results);
