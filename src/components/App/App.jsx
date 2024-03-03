@@ -10,13 +10,6 @@ const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
 const Cast = lazy(() => import('components/Cast/Cast'));
 const Reviews = lazy(() => import('components/Reviews/Reviews'));
 
-// import HomePage from 'pages/HomePage/HomePage';
-// import MoviesPage from 'pages/MoviesPage/MoviesPage';
-// import MoviesPageDetails from 'pages/MoviesPageDetails/MoviesPageDetails';
-// import PageNotFound from 'pages/PageNotFound/PageNotFound';
-// import Cast from 'components/Cast/Cast';
-// import Reviews from 'components/Reviews/Reviews';
-
 const App = () => {
   return (
     <ContainerApp>
