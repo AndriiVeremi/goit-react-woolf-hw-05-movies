@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NavLayout from 'layouts/NavLayout';
 import { ContainerApp } from './App.styled';
@@ -22,11 +22,11 @@ const App = () => {
     <ContainerApp>
       <Routes>
         <Route path="/" element={<NavLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:movId" element={<MoviesPageDetails />}>
-            <Route path="/movies/:movId/cast" element={<Cast />} />
-            <Route path="/movies/:movId/reviews" element={<Reviews />} />
+          <Route index element={<Suspense fallback={<h1>loading...</h1>}><HomePage /></Suspense>} />
+          <Route path="/movies" element={<Suspense fallback={<h1>loading...</h1>}><MoviesPage /></Suspense>} />
+          <Route path="/movies/:movId" element={<Suspense fallback={<h1>loading...</h1>}><MoviesPageDetails /></Suspense>}>
+            <Route path="/movies/:movId/cast" element={<Suspense fallback={<h1>loading...</h1>}><Cast /></Suspense>} />
+            <Route path="/movies/:movId/reviews" element={<Suspense fallback={<h1>loading...</h1>}><Reviews /></Suspense>} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Route>
