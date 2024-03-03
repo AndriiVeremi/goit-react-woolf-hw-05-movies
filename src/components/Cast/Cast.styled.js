@@ -14,6 +14,8 @@ padding: 10px;
 width: 200px;
 height: 300px;
 align-items: center;
+background-color: #ebebeb;
+border-radius: 5px;
 `
 export const CastDesc = styled.div`
 display: flex;

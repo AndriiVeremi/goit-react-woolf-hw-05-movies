@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { getMoviesReviews } from 'api/theMoviedAPI';
+import { ReviewsItem, ReviewsList, ReviewsWrap, ReviewsAuthor, ReviewsText } from './Reviews.styled';
 
 const Reviews = () => {
   const { movId } = useParams();
@@ -38,15 +39,17 @@ const Reviews = () => {
   return (
     <div>
       {error && <h2>error: {error}</h2>}
-      <ul>
+      <ReviewsList>
         {reviews.map(({ author, content, created_at }) => (
-          <li>
-            <p>{author}</p>
+          <ReviewsItem key={author}>
+            <ReviewsWrap>
+            <ReviewsAuthor>{author}</ReviewsAuthor>
             <p>{created_at}</p>
-            <p>{content}</p>
-          </li>
+            </ReviewsWrap>
+            <ReviewsText>{content}</ReviewsText>
+          </ReviewsItem>
         ))}
-      </ul>
+      </ReviewsList>
     </div>
   );
 };

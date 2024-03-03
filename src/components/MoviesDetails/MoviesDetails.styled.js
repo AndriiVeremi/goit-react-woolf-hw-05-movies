@@ -28,34 +28,37 @@ export const DetailsInfoBord = styled.span`
 `;
 
 export const AdditionalWrapper = styled.div`
-border-top: 1px solid #333;
-padding: 10px;
+  border-top: 1px solid #333;
+  padding: 10px;
 `;
 
 export const AdditionalTitle = styled.h2`
-text-align: center;
-margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 `;
 
 export const AdditionalList = styled.div`
-display: flex;
-gap: 30px;
-align-items: center;
-justify-content: center;
-margin-bottom: 30px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
 `;
 
-
-
 export const AdditionalLink = styled(NavLink)`
-padding: 8px 22px;
-background-color: #fff;
-border-radius: 10px;
-border: 1px solid #5d5d5d;
-color: #5d5d5d;
-&:hover {
+  padding: 8px 22px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #5d5d5d;
+  color: #5d5d5d;
+  &:hover {
     background-color: #4f4f4f;
     border: 1px solid #4f4f4f;
     color: #fff;
-}
+  }
+  &.active {
+    background-color: #4f4f4f;
+    border: 1px solid #4f4f4f;
+    color: #fff;
+  }
 `;
