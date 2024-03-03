@@ -1,11 +1,21 @@
+// import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NavLayout from 'layouts/NavLayout';
+import { ContainerApp } from './App.styled';
+
+// const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+// const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
+// const MoviesPageDetails = lazy(() => import('pages/MoviesPageDetails/MoviesPageDetails'));
+// const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
+// const Cast = lazy(() => import('components/Cast/Cast'));
+// const Reviews = lazy(() => import('components/Reviews/Reviews'));
+
 import HomePage from 'pages/HomePage/HomePage';
 import MoviesPage from 'pages/MoviesPage/MoviesPage';
 import MoviesPageDetails from 'pages/MoviesPageDetails/MoviesPageDetails';
+import PageNotFound from 'pages/PageNotFound/PageNotFound';
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
-import { ContainerApp } from './App.styled';
 
 const App = () => {
   return (
@@ -18,8 +28,8 @@ const App = () => {
             <Route path="/movies/:movId/cast" element={<Cast />} />
             <Route path="/movies/:movId/reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Route>
-        <Route path="*" element={<p>Not found</p>} />
       </Routes>
     </ContainerApp>
   );
