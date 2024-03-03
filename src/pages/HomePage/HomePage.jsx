@@ -4,6 +4,7 @@ import { getTrendingDay } from '../../api/theMoviedAPI';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import { Title } from './HomePage.styled';
 
+
 const HomePage = () => {
   const [moviesTrending, setMoviesTrending] = useState([]);
   const [error, setError] = useState(null);

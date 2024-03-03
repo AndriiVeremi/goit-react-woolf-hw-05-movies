@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { getMoviesDetails } from 'api/theMoviedAPI';
 import MoviesDetails from 'components/MoviesDetails/MoviesDetails';
@@ -8,6 +8,9 @@ const MoviesPageDetails = () => {
   const { movId } = useParams();
   const [details, setDetails] = useState([]);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const getMovies = async () => {
@@ -27,9 +30,14 @@ const MoviesPageDetails = () => {
     getMovies();
   }, [movId]);
 
+  const onGoBack = () => {
+    navigate(location.state?.from ?? '/');
+  };
+
   return (
     <>
-      <MoviesDetails details={details} />
+      <button onClick={onGoBack}>Go back</button>
+      {details && <MoviesDetails details={details} />}
       {error && <h2>error: {error}</h2>}
     </>
   );
